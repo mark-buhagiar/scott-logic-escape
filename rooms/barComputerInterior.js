@@ -1,5 +1,5 @@
 const roomKeys = require("./keys");
-const puzzleKeys = require("../puzzles/Keys");
+const puzzleKeys = require("../puzzles/keys");
 const sectionTypes = require("./sectionTypes");
 
 const room = {
