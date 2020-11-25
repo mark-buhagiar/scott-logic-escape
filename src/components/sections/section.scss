@@ -1,0 +1,40 @@
+.panel{
+
+  label{
+    margin-bottom:10px;
+  }
+
+  img{
+    width:95%;
+    align-self: center;
+  }
+
+  .button-group{
+    align-self: center;
+
+    button:hover{
+      cursor: pointer;
+    }
+    
+    button:not(:first-of-type){
+      margin-left:10px;
+    }
+  }
+
+  .input-group{
+    align-self: center;
+
+    *{
+    margin-left: 10px;
+    }
+
+    :first-child{
+      margin-left:0px;
+    }
+  }
+
+  .hint{
+    align-self: center;
+    font-size:.8em;
+  }
+}
