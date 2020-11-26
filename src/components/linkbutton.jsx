@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router'
+import React from "react";
+import Button from "@material-ui/core/Button";
+import { withRouter } from "react-router";
 
 const LinkButton = (props) => {
   const {
@@ -11,23 +11,24 @@ const LinkButton = (props) => {
     to,
     onClick,
     key,
+    buttonText,
     ...rest
-  } = props
+  } = props;
   return (
-    <button
+    <Button
       key={key}
       {...rest}
+      variant="contained"
+      size="medium"
+      color="primary"
       onClick={(event) => {
-        onClick && onClick(event)
-        history.push(to)
+        onClick && onClick(event);
+        history.push(to);
       }}
-    />
-  )
-}
-
-LinkButton.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
-}
+    >
+      {buttonText}
+    </Button>    
+  );
+};
 
 export default withRouter(LinkButton);

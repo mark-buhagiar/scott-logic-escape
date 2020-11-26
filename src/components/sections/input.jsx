@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import TextField from '@material-ui/core/TextField';
 
 const InputSection = ({ label, puzzle, button }) => {
   const history = useHistory();
@@ -41,13 +43,25 @@ const InputSection = ({ label, puzzle, button }) => {
     <>
       <label>{label}</label>
       <div className="input-group">
-        <input
+        {/* <input
           type="text"
           value={value}
           onKeyPress={handleKeyPress}
           onChange={(e) => setValue(e.target.value)}
-        />
-        <button onClick={submit}>{button}</button>
+        /> */}
+        <TextField variant="filled" 
+          value={value}
+          onKeyPress={handleKeyPress}
+          onChange={(e) => setValue(e.target.value)}/>
+
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={submit}
+        >
+          {button}
+        </Button>
       </div>
       <div className="hint">{hint}</div>
     </>

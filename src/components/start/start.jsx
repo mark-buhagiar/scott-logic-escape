@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
 
 import "./start.scss";
 import Axios from "axios";
@@ -32,7 +35,7 @@ const Start = () => {
   };
 
   return (
-    <div className="panel">
+    <Paper className="panel">
       <h1>Welcome to We Are London Dec 2020!</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -43,15 +46,22 @@ const Start = () => {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum
       </p>
-      <div className="actions">
-        <input
-          type="text"
+      <div className="input-group">
+        <TextField
+          variant="filled"
           value={teamName}
           onChange={(e) => setTeamName(e.target.value)}
         />
-        <button onClick={start}>{buttonText}</button>
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          onClick={start}
+        >
+          {buttonText}
+        </Button>
       </div>
-    </div>
+    </Paper>
   );
 };
 

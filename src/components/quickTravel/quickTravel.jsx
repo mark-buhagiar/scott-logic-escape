@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
 
 const QuickTravel = () => {
   const [destinations, setDestinations] = useState([]);
@@ -18,14 +19,14 @@ const QuickTravel = () => {
 
   const renderDestinations = () => {
     return (
-      <div className="panel">
-        <span>Quick Travel Links</span>
+      <Paper className="panel" elevation={1}>
+        <h3>Quick Travel Links</h3>
         {destinations.map(({ key, name }) => (
           <Link key={key} to={`/room/${key}`}>
             {name}
           </Link>
         ))}
-      </div>
+      </Paper>
     );
   };
 

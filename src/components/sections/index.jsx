@@ -5,6 +5,7 @@ import ImageSection from "./image";
 import TextSection from "./text";
 import InputSection from "./input";
 import OptionsSection from "./options";
+import Paper from "@material-ui/core/Paper";
 
 import "./section.scss";
 
@@ -28,7 +29,11 @@ const Section = ({ section }) => {
     }
   };
 
-  return <div className="panel">{generateSection()}</div>;
+  return (
+    <Paper className="panel" elevation={3}>
+      {generateSection()}
+    </Paper>
+  );
 };
 
 export default Section;

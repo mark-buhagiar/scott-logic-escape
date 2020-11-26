@@ -10,26 +10,12 @@
   }
 
   .button-group{
+    display:flex;
+    flex-flow: column;
     align-self: center;
 
-    button:hover{
-      cursor: pointer;
-    }
-    
-    button:not(:first-of-type){
-      margin-left:10px;
-    }
-  }
-
-  .input-group{
-    align-self: center;
-
-    *{
-    margin-left: 10px;
-    }
-
-    :first-child{
-      margin-left:0px;
+    button{
+      margin-bottom: 10px;
     }
   }
 
@@ -37,4 +23,8 @@
     align-self: center;
     font-size:.8em;
   }
+}
+
+input{
+  background-color: #fff!important;
 }

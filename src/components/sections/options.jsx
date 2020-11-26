@@ -7,9 +7,7 @@ const OptionsSection = ({ label, items }) => {
       <label>{label}</label>
       <div className="button-group">
         {items.map(({ destination, label },idx) => (
-          <LinkButton to={`/room/${destination}`} key={idx}>
-            {label}
-          </LinkButton>
+          <LinkButton to={`/room/${destination}`} key={idx} buttonText={label}/>
         ))}
       </div>
     </>
