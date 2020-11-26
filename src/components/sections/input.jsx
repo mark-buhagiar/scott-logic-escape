@@ -12,7 +12,14 @@ const InputSection = ({ label, puzzle, button }) => {
     if (!!cachedValue) setValue(cachedValue);
   }, [puzzle]);
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      submit();
+    }
+  };
+
   const submit = async () => {
+    if (value.length === 0) return;
     localStorage.setItem(puzzle, value);
 
     const url = `${process.env.REACT_APP_API_URL}/submit-guess`;
@@ -23,6 +30,7 @@ const InputSection = ({ label, puzzle, button }) => {
     });
 
     if (response.data.success) {
+      setHint("");
       history.push(response.data.destination);
     } else {
       setHint(response.data.hint);
@@ -36,6 +44,7 @@ const InputSection = ({ label, puzzle, button }) => {
         <input
           type="text"
           value={value}
+          onKeyPress={handleKeyPress}
           onChange={(e) => setValue(e.target.value)}
         />
         <button onClick={submit}>{button}</button>

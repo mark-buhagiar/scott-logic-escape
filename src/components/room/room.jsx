@@ -9,11 +9,20 @@ const Room = () => {
   const { roomId } = useParams();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [roomId, sections]);
+
+  useEffect(() => {
     async function doWork() {
+      let config = {
+        headers: {
+          "x-team-name": localStorage.getItem("teamName"),
+        },
+      };
       const url = `${process.env.REACT_APP_API_URL}/room-details/${roomId}`;
 
       try {
-        const response = await Axios.get(url);
+        const response = await Axios.get(url, config);
         const data = response.data;
 
         if (data.quickTravel) {
@@ -29,9 +38,10 @@ const Room = () => {
             );
 
             // A hack for all mankind
-            window.dispatchEvent( new Event('storage') );
+            window.dispatchEvent(new Event("storage"));
           }
         }
+        window.scrollTo(0, 0);
 
         setSections(data.sections);
       } catch {

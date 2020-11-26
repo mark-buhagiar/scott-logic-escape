@@ -18,6 +18,7 @@ const Start = () => {
   }, []);
 
   const start = async () => {
+    if (teamName.length === 0) return;
     try {
       localStorage.setItem("teamName", teamName);
       const url = `${process.env.REACT_APP_API_URL}/team-start`;

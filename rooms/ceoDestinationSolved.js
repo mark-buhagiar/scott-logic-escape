@@ -15,8 +15,8 @@ const room = {
       label: "Where do you want to go next?",
       items: [
         {
-          label: "Outside accounts",
-          destination: roomKeys.outsideAccounts,
+          label: "7th floor lobby",
+          destination: roomKeys.lobby7Floor,
         },
         {
           label: "The staff bar",

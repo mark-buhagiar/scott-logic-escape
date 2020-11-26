@@ -12,7 +12,7 @@ const puzzles = [
     key: puzzleKeys.liftAccessCode,
     value: "1117",
     hint: "That code didn't work! Look at that employee report to work this out.",
-    destination: roomKeys.outsideAccounts,
+    destination: roomKeys.lobby7Floor,
   },
   {
     key: puzzleKeys.ceoOfficeDoor,
@@ -59,26 +59,38 @@ const puzzles = [
   {
     key: puzzleKeys.financeDoorCode,
     value: "112324",
+    hint: "Nope! Didn't open! You're going to need some clues from elsewhere first!",
+    destination: roomKeys.financeDepartmentInterior,
   },
   {
     key: puzzleKeys.valComputerPassword,
     value: "2416",
+    hint: "Computer says no! Maybe there's a clue elsewhere in the building?",
+    destination: roomKeys.valComputerInterior,
   },
   {
     key: puzzleKeys.financeCupboard,
     value: "2872",
+    hint: "Nope! Have you checked Val's computer?",
+    destination: roomKeys.financeStationaryCupboardInterior,
   },
   {
     key: puzzleKeys.financeSeatNumber,
     value: "F6",
+    hint: "Nope! Check all the clues you've gathered to find which row and seat number you need! The multiplication table, orders to check and boarding pass will help you",
+    destination: roomKeys.financeDepartmentSeat,
   },
   {
     key: puzzleKeys.financeRequiredClues,
     value: "map part 1, map part 2, grid 1, grid 2",
+    hint: "Nope! check the formatting. There should be 4 items, all lowercase and each item seperated by a comma and a space. The clues are written as they're labelled and go in the order of geography first, then numbers.",
+    destination: roomKeys.financeDepartmentSafe,
   },
   {
     key: puzzleKeys.financeSafeCode,
     value: "08209175",
+    hint: "Nope! Maybe the boarding passes can help here?",
+    destination: roomKeys.financeDepartmentSafeInterior
   },
 ];
 

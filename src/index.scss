@@ -24,6 +24,10 @@ code {
   display:flex;
   flex-flow:column;
   justify-content: center;
+
+  a{    
+    align-self: flex-start;
+  }
 }
 
 .panel:last-of-type{

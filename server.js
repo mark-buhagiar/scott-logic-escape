@@ -14,6 +14,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const rooms = require("./rooms");
 const puzzles = require("./puzzles");
+const roomKeys = require("./rooms/keys");
+const eventTypes = require("./constants/eventTypes");
+const headers = require("./constants/headers");
 
 var app = express();
 
@@ -33,7 +36,7 @@ if (process.env.NODE_ENV !== "production") {
 
 function logSubmitGuess(teamName, puzzle, value, correct) {
   client.trackEvent({
-    name: "Team submit guess",
+    name: eventTypes.submitGuess,
     properties: { teamName, puzzle, value, correct },
   });
 }
@@ -65,8 +68,28 @@ app.post("/submit-guess", function (req, res, next) {
   }
 });
 
+function checkForExitRoom(teamName, currDate, roomId){
+  if (roomId === roomKeys.exit){    
+    client.trackEvent({
+      name: eventTypes.exit,
+      properties: { teamName, exitTimeMs: currDate.getTime(), exitTime: currDate.toISOString() },
+    });
+  }
+}
+
 app.get("/room-details/:roomId", function (req, res) {
-  const room = rooms.find((x) => x.key === req.params.roomId);
+  const roomId = req.params.roomId;
+  const room = rooms.find((x) => x.key === roomId);
+  const teamName = req.headers[headers.teamName];
+  const currDate = new Date();
+
+  client.trackEvent({
+    name: eventTypes.room,
+    properties: { teamName, roomId, visitTimeMs: currDate.getTime(), visitTime: currDate.toISOString() },
+  });
+
+  checkForExitRoom(teamName, currDate, roomId);
+
   if (!!room) return res.send(room);
 
   return res.status(400).send("Invalid room ID. 👻");
@@ -75,7 +98,7 @@ app.get("/room-details/:roomId", function (req, res) {
 app.post("/team-start", function (req, res) {  
   const currDate = new Date();
   client.trackEvent({
-    name: "Team start",
+    name: eventTypes.start,
     properties: { teamName: req.body.teamName, startTimeMs: currDate.getTime(), startTime: currDate.toISOString() },
   });
   return res.status(200).send();

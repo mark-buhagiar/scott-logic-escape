@@ -4,7 +4,7 @@ const sectionTypes = require("./sectionTypes");
 const room = {
   name: "Reception drawer security note",
   quickTravel: false,
-  key: roomKeys.receptionDrawerSecuritySheet,
+  key: roomKeys.receptionDrawerPostit,
   sections: [
     {
       type: sectionTypes.text,

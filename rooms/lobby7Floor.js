@@ -2,9 +2,9 @@ const roomKeys = require("./keys");
 const sectionTypes = require("./sectionTypes");
 
 const page = {
-  name: "Outside Accounts",
+  name: "7th floor lobby",
   quickTravel: true,  
-  key: roomKeys.outsideAccounts,
+  key: roomKeys.lobby7Floor,
   sections: [
     {
       type: sectionTypes.text,

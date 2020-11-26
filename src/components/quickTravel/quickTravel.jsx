@@ -6,11 +6,9 @@ const QuickTravel = () => {
 
   useEffect(() => {
     function updateDestinations() {
-      console.log('testing')
       const quickTravelDestinations = JSON.parse(
         localStorage.getItem("quickTravelDestinations") || "[]"
       );
-      console.log(quickTravelDestinations)
       setDestinations(quickTravelDestinations);
     }
 
