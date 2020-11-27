@@ -1,0 +1,36 @@
+#Quick-Travel{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20%;
+  max-width: 300px;
+
+  .title{
+    display:flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.collapsed{
+    width: 50px;
+  }
+
+
+  ul{
+    margin:0;
+    padding-left:20px;
+
+    li{
+      margin-top: 5px;
+    }
+  }
+
+  a{    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    margin-top: 5px;
+  }
+}

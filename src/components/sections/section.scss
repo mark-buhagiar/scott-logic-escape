@@ -5,7 +5,12 @@
   }
 
   img{
-    width:95%;
+    &.preview{      
+      max-height: 500px;
+    }
+
+    max-width: 95%;
+    height: 100%;
     align-self: center;
   }
 

@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -8,40 +9,58 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.panel{  
-  width:50%;  
-  color:#e2e2e2!important;
-  background-color: #333333!important;
-  min-height: 50px;  
+.clickable {
+  cursor: pointer;
+}
+
+.zoomable {
+  cursor: zoom-in;
+}
+
+.panel {  
+  width: 50%;
+  color: #e2e2e2 !important;
+  background-color: #333333 !important;
+  min-height: 50px;
   margin-top: 20px;
-  margin-left:auto;
-  margin-right:auto;  
+  margin-left: auto;
+  margin-right: auto;
   padding: 10px;
-  display:flex;
-  flex-flow:column;
+  display: flex;
+  flex-flow: column;
   justify-content: center;
 
-  a{    
-    align-self: flex-start;    
-    color:#e2e2e2!important;
+  &.modal {
+    position: absolute;
+    margin: auto;
+    height: 90%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
-  
-  .input-group{
-    display:flex;
-    flex-flow:row;
+
+  a {
+    align-self: flex-start;
+    color: #e2e2e2 !important;
+  }
+
+  .input-group {
+    display: flex;
+    flex-flow: row;
     justify-items: center;
     align-self: center;
 
-    *{
-    margin-left: 10px;
+    * {
+      margin-left: 10px;
     }
 
-    :first-child{
-      margin-left:0px;
+    :first-child {
+      margin-left: 0px;
     }
   }
 }
