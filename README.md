@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Usage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This escape room is designed to run on Heroku, while at the same time interacting with logs on AZ App Insights.
 
-## Available Scripts
+[Sign up for Heroku](https://signup.heroku.com/)\
+[Sing up for Azure](https://portal.azure.com/)
 
-In the project directory, you can run:
+Free options are available for both.
 
-### `npm start`
+Set up a dyno in Heroku, and an Application Insights Instance on AZ. Take note of the App Insights Instrument ID.
+Create config values on the Heroku dyno as per the below:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+APPINSIGHTS_INSTRUMENTATIONKEY : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX
+REACT_APP_API_URL : https://XXXXXXXXXXXXXXXX.herokuapp.com
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Deploy the application (black box for the sake of this README).
 
-### `npm test`
+The dyno should now successfully build a production version of the app and deploy it. Visit the url to test.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Log browsing
 
-### `npm run build`
+The application create a number of custom AZ Log events.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Models
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- "Submit guess": When a team submits a guess at a specific puzzle;
+- "Room visit": When a team visits a particular room;
+- "Start": When a team starts playing;
+- "Exit": When a team successfully exits the escape room, essentially 'winning';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Submit guess
+- teamName: string;
+- puzzle: string;
+- value: string;
+- correct: boolean;
 
-### `npm run eject`
+### Room visit
+- teamName: string;
+- roomId: string;
+- visitTimeMs: long; (event time since epoch in Ms)
+- visitTime: string; (ISO string of visit time)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Start
+- teamName: string;
+- startTimeMs: long; (event time since epoch in Ms)
+- startTime: string; (ISO string of visit time)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Exit
+- teamName: string;
+- exitTimeMs: long; (event time since epoch in Ms)
+- exitTime: string; (ISO string of visit time)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Sample queries
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Get all entries for a specific team in order of time descending (most recent first)
+```
+customEvents
+| where customDimensions.teamName == "Test"
+| order by timestamp desc
+```
 
-## Learn More
+Get events of a particular type for a specific team
+```
+customEvents
+| where customDimensions.teamName == "Test"
+    and name == "Start"
+| order by timestamp desc
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Get events of multiple types for a specific team
+```
+customEvents
+| where customDimensions.teamName == "Test"
+    and name in ("Start", "Exit")
+| order by timestamp desc
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+View only select properties from the retrieved logs
+```
+customEvents
+| where customDimensions.teamName == "Test"
+    and name in ("Start", "Exit")
+| order by timestamp desc
+| project customDimensions.teamName, customDimensions.startTimeMs, customDimensions.startTime, customDimensions.exitTimeMs, customDimensions.exitTime
+```
