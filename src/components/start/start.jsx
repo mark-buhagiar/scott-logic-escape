@@ -28,15 +28,13 @@ const Start = () => {
       await Axios.post(url, { teamName });
       history.push("/room/reception");
     } catch {
-      alert(
-        "There has been a bit of a whoopsie, kindly contact Laurence, James D, Chris or Mark B"
-      );
+      alert(`There has been a bit of a whoopsie, kindly contact ${process.env.REACT_APP_CONTACT_PERSON}`);
     }
   };
 
   return (
     <Paper className="panel">
-      <h1>Welcome to We Are London Dec 2020!</h1>
+      <h1>{process.env.REACT_APP_EVENT_TITLE}</h1>
       <p>Instructions:</p>
       <p>
         <ul>
@@ -59,7 +57,7 @@ const Start = () => {
           <li>Each team is allowed 3 hints.</li>
           <li>
             If you run into any issues or would like to use a hint, please reach
-            out to Laurence, James D, Chris or Mark B.
+            out to {process.env.REACT_APP_CONTACT_PERSON}.
           </li>
         </ul>
       </p>

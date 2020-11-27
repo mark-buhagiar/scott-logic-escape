@@ -9,7 +9,7 @@ const page = {
     {
       type: sectionTypes.text,
       content: `<h1>Out Of Hours - Escape Room</h1>
-      <p>You and your investigation team arrive at the Scott Logic offices at St. James's.</p>
+      <p>You and your investigation team arrive at the ${process.env.ESCAPE_ROOM_LOCATION}.</p>
       <p>You've been sent by the Commissioner to investigate a fraud case, whilst the coronavirus has cleared out the office, the skipper thought this would be a perfect time to sneak in and do some investigating! This case isn't strictly on the books so you shouldn't really be here... as such, you don't have any keys... you'll have to make your own way through the building and see if you can find any evidence.</p>
       <p>Don't worry, you and your team have your PPE and are all keeping 2 meters away from each other.</p>
       <p>You and your fellow detectives wait outside the building until a security guard walks outside. He doesn't wait for the door to shut before he walks away so you jump at the chance and sneak inside. You head into the main reception, looking to gather evidence as quickly as possible before your PPE deteriorates!</p>

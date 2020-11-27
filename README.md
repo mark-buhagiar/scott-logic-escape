@@ -11,8 +11,14 @@ Set up a dyno in Heroku, and an Application Insights Instance on AZ. Take note o
 Create config values on the Heroku dyno as per the below:
 
 ```
-APPINSIGHTS_INSTRUMENTATIONKEY : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX
 REACT_APP_API_URL : https://XXXXXXXXXXXXXXXX.herokuapp.com
+REACT_APP_CONTACT_PERSON : John Doe
+REACT_APP_EVENT_TITLE : WELCOME TO MY EVENT
+REACT_APP_PAGE_TITLE : Page title
+EXIT_MASTERMINDS_IMAGE_URL : https://XXXXXXXXXXX.XXX/XXXX/XXXX/XXXX/XXX.{jpg/png/etc.}
+ESCAPE_ROOM_LOCATION : Contoso Ltd offices on the moon
+FAVICON_URL : https://www.XXXXXXXXX.XXX/XXX/favicon.ico
+APPINSIGHTS_INSTRUMENTATIONKEY : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX
 ```
 
 Deploy the application (black box for the sake of this README).

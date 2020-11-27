@@ -15,7 +15,7 @@ const page = {
     {
       type: sectionTypes.image,
       label: "Masterminds relaxing",
-      source: "/img/masterminds.png"
+      source: process.env.EXIT_MASTERMINDS_IMAGE_URL
     }
   ],
 };

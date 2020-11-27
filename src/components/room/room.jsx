@@ -45,9 +45,7 @@ const Room = () => {
 
         setSections(data.sections);
       } catch {
-        alert(
-          "There has been a bit of a whoopsie, kindly contact Laurence, James D, Chris or Mark B"
-        );
+        alert(`There has been a bit of a whoopsie, kindly contact ${process.env.REACT_APP_CONTACT_PERSON}`);
       }
     }
 
