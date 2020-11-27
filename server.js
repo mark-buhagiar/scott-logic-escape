@@ -84,7 +84,7 @@ app.get("/room-details/:roomId", function (req, res) {
   const currDate = new Date();
 
   client.trackEvent({
-    name: eventTypes.room,
+    name: eventTypes.roomVisit,
     properties: { teamName, roomId, visitTimeMs: currDate.getTime(), visitTime: currDate.toISOString() },
   });
 
