@@ -57,6 +57,11 @@ const room = {
     },
     {
       type: sectionTypes.image,
+      label:"Boarding pass 4",
+      source: "/img/boarding-pass-4.png"
+    },
+    {
+      type: sectionTypes.image,
       label:"Tube list 1",
       source: "/img/tube-list-1.jpg"
     },

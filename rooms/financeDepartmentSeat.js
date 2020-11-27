@@ -3,8 +3,8 @@ const puzzleKeys = require("../puzzles/keys");
 const sectionTypes = require("./sectionTypes");
 
 const room = {
-  name: "Finance department seat",
-  quickTravel: false,
+  name: "Rucksack",
+  quickTravel: true,
   key: roomKeys.financeDepartmentSeat,
   sections: [
     {
@@ -23,7 +23,7 @@ const room = {
     },
     {
       type: sectionTypes.input,
-      label: "Which clue's do you need to combine to get the safe code?",
+      label: "Which clues do you need to combine to get the safe code?",
       puzzle: puzzleKeys.financeRequiredClues,
       button: "Piece it together",
     }

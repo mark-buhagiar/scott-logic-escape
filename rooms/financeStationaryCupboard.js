@@ -4,7 +4,7 @@ const sectionTypes = require("./sectionTypes");
 
 const room = {
   name:"Stationary cupboard",
-  quickTravel: true,
+  quickTravel: false,
   key: roomKeys.financeStationaryCupboard,
   sections: [
     {

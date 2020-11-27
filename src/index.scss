@@ -56,11 +56,11 @@ code {
     align-self: center;
 
     * {
-      margin-left: 10px;
+      margin-right: 10px;
     }
 
-    :first-child {
-      margin-left: 0px;
+    :last-child {
+      margin-right: 0px;
     }
   }
 }

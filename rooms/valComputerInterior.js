@@ -14,7 +14,7 @@ const room = {
     },
     {
       type: sectionTypes.image,
-      label: "What is the computer password?",
+      label: "Biggin Hill Map",
       source: "/img/biggin-hill-map.jpg"
     },
   ]
