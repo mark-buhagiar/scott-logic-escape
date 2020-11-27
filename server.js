@@ -105,7 +105,6 @@ app.post("/team-start", function (req, res) {
 });
 
 app.get("/favicon.ico", function (req, res) {
-  console.log('eere')
   return res.redirect(process.env.FAVICON_URL);
 });
 
