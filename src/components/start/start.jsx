@@ -29,7 +29,7 @@ const Start = () => {
       history.push("/room/reception");
     } catch {
       alert(
-        "There has been a bit of a whoopsie, kindly contact Laurence, Chris or Mark"
+        "There has been a bit of a whoopsie, kindly contact Laurence, James D, Chris or Mark B"
       );
     }
   };
@@ -37,14 +37,37 @@ const Start = () => {
   return (
     <Paper className="panel">
       <h1>Welcome to We Are London Dec 2020!</h1>
+      <p>Instructions:</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum
+        <ul>
+          <li>
+            The leader of each team should share his screen to allow everyone to
+            follow along.
+          </li>
+          <li>
+            Your time will start as soon as you click the start button below.
+          </li>
+          <li>
+            It's probably a good idea to save images as you come across them.
+            This will save you time down the line.
+          </li>
+          <li>
+            Make sure you get to the very end for your final time to be
+            recorded. Trust me, you'll know when you're on the final screen.
+          </li>
+          <li>Progress is saved as you progress.</li>
+          <li>Each team is allowed 3 hints.</li>
+          <li>
+            If you run into any issues or would like to use a hint, please reach
+            out to Laurence, James D, Chris or Mark B.
+          </li>
+        </ul>
+      </p>
+      <p>
+        Note: Please keep in mind that in line will all code that has been
+        developed late at night and rushed to production, there has been no
+        formal testing, and some sort of vulnerabilities might be present.
+        Please, don't cheat, and if you do...👏
       </p>
       <div className="input-group">
         <TextField
