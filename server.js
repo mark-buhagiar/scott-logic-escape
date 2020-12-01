@@ -15,6 +15,7 @@ const path = require("path");
 const rooms = require("./rooms");
 const puzzles = require("./puzzles");
 const roomKeys = require("./rooms/keys");
+const roomFriendlyNames = require("./rooms/friendlyNames");
 const eventTypes = require("./constants/eventTypes");
 const headers = require("./constants/headers");
 
@@ -82,10 +83,11 @@ app.get("/room-details/:roomId", function (req, res) {
   const room = rooms.find((x) => x.key === roomId);
   const teamName = req.headers[headers.teamName];
   const currDate = new Date();
+  const roomName = roomFriendlyNames[roomId];
 
   client.trackEvent({
     name: eventTypes.roomVisit,
-    properties: { teamName, roomId, visitTimeMs: currDate.getTime(), visitTime: currDate.toISOString() },
+    properties: { teamName, roomName, roomId, visitTimeMs: currDate.getTime(), visitTime: currDate.toISOString() },
   });
 
   checkForExitRoom(teamName, currDate, roomId);
